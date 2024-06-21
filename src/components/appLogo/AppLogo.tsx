@@ -9,7 +9,7 @@ export const AppLogo = () => {
   const navigate = useNavigatePreserveQuery();
   const { network } = useNetwork();
   return (
-    <LogoWrapper onClick={() => navigate(ROUTES.deployer)}>
+    <LogoWrapper onClick={() => navigate(ROUTES.jetton)}>
       <ImageWrapper>
         <img src={logo} alt="Logo" />
       </ImageWrapper>

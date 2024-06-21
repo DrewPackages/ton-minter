@@ -45,22 +45,6 @@ export const Header = () => {
             {matches && <AppLogo />}
             {matches && <HeaderMenu />}
           </HeaderOptionalContent>
-          <Box sx={{ width: "100%" }}>
-            <SearchBar
-              example={example}
-              resetExample={resetExample}
-              closeMenu={() => setMobileMenu(false)}
-            />
-            <HeaderExampleTextWrapper>
-              <HeaderExampleText>
-                Enter an existing Jetton contract address.
-                <HeaderExampleLink variant="body2" onClick={() => setExample(EXAMPLE_ADDRESS)}>
-                  {" "}
-                  example
-                </HeaderExampleLink>
-              </HeaderExampleText>
-            </HeaderExampleTextWrapper>
-          </Box>
           <MobileMenu showMenu={mobileMenu && !matches} closeMenu={() => setMobileMenu(false)} />
         </HeaderContent>
       </HeaderWrapper>

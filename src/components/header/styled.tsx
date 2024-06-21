@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { APP_GRID } from "consts";
 
 const HeaderWrapper = styled(AppBar)(({ theme }) => ({
-  height: 200,
+  height: 120,
   background: "white",
   border: "0.5px solid rgba(114, 138, 150, 0.24)",
   boxShadow: "0px 2px 16px rgba(114, 138, 150, 0.08)",

@@ -4,14 +4,11 @@ import { Popup } from "components/Popup";
 import useNotification from "hooks/useNotification";
 import { jettonDeployController } from "lib/deploy-controller";
 import { useState } from "react";
-import WalletConnection from "services/wallet-connection";
 import useJettonStore from "store/jetton-store/useJettonStore";
 import { Address } from "ton";
 import { toDecimalsBN } from "utils";
 import { AppButton } from "components/appButton";
 import { AppNumberInput } from "components/appInput";
-import { useRecoilState } from "recoil";
-import { jettonActionsState } from "pages/jetton/actions/jettonActions";
 import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
 
 function MintJettonsAction() {
@@ -19,12 +16,11 @@ function MintJettonsAction() {
   const [open, setOpen] = useState(false);
   const [actionInProgress, setActionInProgress] = useState(false);
   const [tonconnect] = useTonConnectUI();
-  const { jettonMaster, isAdmin, symbol, getJettonDetails, isMyWallet, decimals } =
-    useJettonStore();
+  const { jettonMaster, symbol, getJettonDetails, isMyWallet, decimals } = useJettonStore();
   const walletAddress = useTonAddress();
   const { showNotification } = useNotification();
 
-  if (!isAdmin || !isMyWallet) {
+  if (!isMyWallet) {
     return null;
   }
 

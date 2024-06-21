@@ -8,12 +8,13 @@ import { useCallback } from "react";
 import useNotification from "hooks/useNotification";
 import { getUrlParam, isValidAddress } from "utils";
 import { useJettonAddress } from "hooks/useJettonAddress";
-import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
+import { useTonAddress } from "@tonconnect/ui-react";
 
 function useJettonStore() {
   const [state, setState] = useRecoilState(jettonStateAtom);
   const reset = useResetRecoilState(jettonStateAtom);
   const { showNotification } = useNotification();
+  const connectedWalletAddressNonFriendly = useTonAddress(false);
   const connectedWalletAddress = useTonAddress();
   const { jettonAddress } = useJettonAddress();
 
@@ -55,7 +56,8 @@ function useJettonStore() {
         return;
       }
       const _adminAddress = result.minter.admin.toFriendly();
-      const admin = isMyWallet && _adminAddress === connectedWalletAddress;
+      const admin =
+        isMyWallet && result.minter.admin.toString() === connectedWalletAddressNonFriendly;
 
       let image: string | undefined;
 
@@ -123,7 +125,14 @@ function useJettonStore() {
         jettonLoading: false,
       }));
     }
-  }, [setState, showNotification, connectedWalletAddress, jettonAddress, reset]);
+  }, [
+    setState,
+    showNotification,
+    connectedWalletAddress,
+    connectedWalletAddressNonFriendly,
+    jettonAddress,
+    reset,
+  ]);
 
   return {
     ...state,

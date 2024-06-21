@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { createContext, useEffect } from "react";
 import { APP_GRID, ROUTES } from "consts";
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
-import { DeployerPage, Jetton } from "pages";
+import { Jetton } from "pages";
 import analytics from "services/analytics";
 import { Footer } from "components/footer";
 import { Header } from "components/header";
@@ -106,8 +106,7 @@ const App = () => {
             />
             <Route path="/" element={<Header />}>
               <Route path="/" element={<ContentWrapper />}>
-                <Route path={ROUTES.deployer} element={<DeployerPage />} />
-                <Route path={ROUTES.jettonId} element={<Jetton />} />
+                <Route path={ROUTES.jetton} element={<Jetton />} />
               </Route>
             </Route>
           </Routes>

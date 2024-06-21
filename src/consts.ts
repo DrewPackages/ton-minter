@@ -1,8 +1,6 @@
 import { getNetwork } from "./lib/hooks/useNetwork";
 const ROUTES = {
-  deployer: "/",
-  jetton: "/jetton",
-  jettonId: "/jetton/:id",
+  jetton: "/",
 };
 
 const APP_GRID = 1156;
